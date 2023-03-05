@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\MyDailyTasksWeb.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\css\\BootsWatch.css",
+      "PackagePath": "staticwebassets\\css\\BootsWatch.css"
+    },
+    {
       "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\js\\Tasks.js",
+      "PackagePath": "staticwebassets\\js\\Tasks.js"
     },
     {
       "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\js\\site.js",
