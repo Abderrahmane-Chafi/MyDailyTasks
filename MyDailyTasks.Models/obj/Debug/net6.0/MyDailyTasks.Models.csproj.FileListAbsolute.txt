@@ -1,0 +1,12 @@
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\bin\Debug\net6.0\MyDailyTasks.Models.deps.json
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\bin\Debug\net6.0\MyDailyTasks.Models.dll
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\bin\Debug\net6.0\MyDailyTasks.Models.pdb
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\MyDailyTasks.Models.csproj.AssemblyReference.cache
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\MyDailyTasks.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\MyDailyTasks.Models.AssemblyInfoInputs.cache
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\MyDailyTasks.Models.AssemblyInfo.cs
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\MyDailyTasks.Models.csproj.CoreCompileInputs.cache
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\MyDailyTasks.Models.dll
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\refint\MyDailyTasks.Models.dll
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\MyDailyTasks.Models.pdb
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasks.Models\obj\Debug\net6.0\ref\MyDailyTasks.Models.dll
