@@ -1,8 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<div class="row m-5">
+    <div class="col">
+        <div >
+            <p>Hi, my name is</p>
+            <h1 class="text-light fw-bold">Chafi Abderrahmane,</h1>
+            <h1 class="fw-bold">I am a Development and computer network engineering student based in Morocco.</h1>
+            <p class="mt-2">
+                Last month, I started to improve myself by changing my habits as well as putting a list of daily tasks that I have to accomplish at the end of the day.
+                So I had the idea to build this small web application so that people can write down their daily tasks quickly and easily,
+                the web application gives you the right to :
+                <ol class="mx-3">
+                    <li> <a href="#">create an account</a></li>
+                    <li> <a asp-controller="Tasks" asp-action="Upsert" asp-area="Customer">create tasks</a> </li>
+                    <li>modify tasks</li>
+                    <li>delete tasks</li>
+                </ol>
+                I hope that this application could be useful, as well as it could help you to manage your daily tasks well.
+            </p>
+        </div>
+        <a class="btn btn-primary mt-3" asp-controller="Tasks" asp-action="Upsert" asp-area="Customer">Create a task</a>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    </div>
 </div>

@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\BootsWatch.css"
     },
     {
+      "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\css\\CustomeStyle.css",
+      "PackagePath": "staticwebassets\\css\\CustomeStyle.css"
+    },
+    {
       "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
