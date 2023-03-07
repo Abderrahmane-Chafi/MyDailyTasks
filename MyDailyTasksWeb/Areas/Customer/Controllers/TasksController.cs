@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Hosting;
 using MyDailyTasks.DataAcess.Repository;
 using MyDailyTasks.DataAcess.Repository.IRepository;
+using MyDailyTasks.Models;
 using MyDailyTasks.Models.ViewModels;
 
 namespace MyDailyTasksWeb.Areas.Customer.Controllers
@@ -64,9 +65,20 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
         }
         #region API CALLS
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(string filter)
         {
-            var tasksList = _unitOfWork.Tasks.GetAll();
+            IEnumerable<Tasks> tasksList = _unitOfWork.Tasks.GetAll();
+
+            switch (filter) {
+                case "Done":
+                    tasksList=tasksList.Where(u => u.Status == "Done");
+                    break;
+                case "Undone":
+                    tasksList=tasksList.Where(u => u.Status == "Undone");
+                    break;
+                default:
+                    break;
+            }
             return Json(new { data = tasksList });
         }
         //POST
