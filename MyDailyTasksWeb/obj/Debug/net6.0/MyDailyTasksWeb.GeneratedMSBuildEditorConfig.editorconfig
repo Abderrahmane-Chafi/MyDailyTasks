@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/acer/Desktop/Projects/P-MyDailyTasks/MyDailyTasks/MyDailyTasksWeb/Areas/Admin/Views/AdminData/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5EYXRhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/acer/Desktop/Projects/P-MyDailyTasks/MyDailyTasks/MyDailyTasksWeb/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

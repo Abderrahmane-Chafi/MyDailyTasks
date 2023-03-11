@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\js\\users.js",
+      "PackagePath": "staticwebassets\\js\\users.js"
+    },
+    {
       "Id": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },

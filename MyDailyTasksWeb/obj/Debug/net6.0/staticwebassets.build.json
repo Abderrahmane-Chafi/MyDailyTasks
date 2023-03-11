@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y4XTt9DSSrLQ2klq01KJ6MrAVKCe15eNzKYea9/yv70=",
+  "Hash": "Bs/PWspZsl0sTuZ4qAFbOa2xGkS4Jlcfwu4y3vqZmt8=",
   "Source": "MyDailyTasksWeb",
   "BasePath": "_content/MyDailyTasksWeb",
   "Mode": "Default",
@@ -1171,6 +1171,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Tasks.js"
+    },
+    {
+      "Identity": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\js\\users.js",
+      "SourceId": "MyDailyTasksWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\",
+      "BasePath": "_content/MyDailyTasksWeb",
+      "RelativePath": "js/users.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\users.js"
     },
     {
       "Identity": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

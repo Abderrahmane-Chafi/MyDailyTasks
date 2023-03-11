@@ -14,13 +14,13 @@ namespace MyDailyTasks.DataAcess.Repository
         
         public ITasksRepository Tasks { get; private set; }
 
-        //public IApplicationUserRepository ApplicationUser { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Tasks = new TasksRepository(_db);
-            //ApplicationUser = new ApplicationUserRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
 
         }
 

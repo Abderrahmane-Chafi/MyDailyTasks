@@ -9,7 +9,7 @@ namespace MyDailyTasks.DataAcess.Repository.IRepository
     public interface IUnitOfWork
     {
         ITasksRepository Tasks { get; }
-        //IApplicationUserRepository ApplicationUser { get; }
+        IApplicationUserRepository ApplicationUser { get; }
         void Save();
     }
 }
