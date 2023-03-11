@@ -1,4 +1,9 @@
-﻿<div class="row m-5">
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<div class="row m-5">
     <div class="col">
         <div >
             <p  data-aos="zoom-in" data-aos-delay="500" data-aos-once="true">Hi, my name is</p>
@@ -10,7 +15,15 @@
                     So I had the idea to build this small web application so that people can write down their daily tasks quickly and easily,
                     the web application gives you the right to :
                     <ol class="mx-3">
-                        <li> <a href="#" class="links">create an account</a></li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li>create an account</li>
+                        }
+                        else
+                        {
+                            <li> <a asp-area="Identity" asp-page="/Account/Register" class=" links">create an account</a></li>
+                        }
+
                         <li> <a class="links" asp-controller="Tasks" asp-action="Upsert" asp-area="Customer">create tasks</a> </li>
                         <li>modify tasks</li>
                         <li>delete tasks</li>

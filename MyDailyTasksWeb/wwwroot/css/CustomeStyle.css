@@ -48,3 +48,7 @@ ol li::before {
 .links:hover:after {
         right: 0;
     }
+
+.logo {
+    font-size:25px;
+}
