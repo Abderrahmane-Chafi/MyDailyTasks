@@ -14,7 +14,7 @@ namespace MyDailyTasks.DataAcess.Repository
         
         public ITasksRepository Tasks { get; private set; }
 
-        public IApplicationUserRepository ApplicationUser { get; private set; }
+        //public IApplicationUserRepository ApplicationUser { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
