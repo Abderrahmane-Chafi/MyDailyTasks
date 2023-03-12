@@ -17,7 +17,6 @@ namespace MyDailyTasks.Models
         public string FirstName { get; set; }
         [DisplayName("Last name")]
         public string LastName { get; set; }
-        public string Country { get; set; }
 
     }
 }

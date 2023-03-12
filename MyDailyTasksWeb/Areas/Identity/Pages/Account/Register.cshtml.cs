@@ -115,11 +115,11 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account
             [DisplayName("Last name")]
             public string LastName { get; set; }
 
-            public string Country { get; set; }
             public string PhoneNumber { get; set; }
             public string? Role { get; set; }
             [ValidateNever]
             public IEnumerable<SelectListItem> RoleList { get; set; }
+
         }
 
 
@@ -155,7 +155,6 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
-                user.Country = Input.Country;
                 user.PhoneNumber = Input.PhoneNumber;
 
                 var result = await _userManager.CreateAsync(user, Input.Password);

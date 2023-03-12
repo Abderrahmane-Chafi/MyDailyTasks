@@ -27,10 +27,6 @@
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
             <div class="py-2">
-                <input placeholder="Country" asp-for="Input.Country" class="form-control" aria-required="true" />
-                <span asp-validation-for="Input.Country" class="text-danger"></span>
-            </div>
-            <div class="py-2">
                 <input placeholder="Phone number" asp-for="Input.PhoneNumber" class="form-control" aria-required="true" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
@@ -48,7 +44,7 @@
             {
                 <div class="py-2">
                     <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
-                        <option disabled selected>=Choisir un role=</option>
+                        <option disabled selected>=Select a role=</option>
                     </select>
                 </div>
             }
