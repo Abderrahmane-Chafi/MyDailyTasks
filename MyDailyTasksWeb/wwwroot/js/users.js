@@ -12,7 +12,7 @@ function loadDataTable(filter) {
         "columns": [
             { "data": "firstName", "widht": "70%" },
             { "data": "lastName", "widht": "70%" },
-            { "data": "country", "widht": "70%" }
+            { "data": "phoneNumber", "widht": "70%" }
         ]
     });
 }
