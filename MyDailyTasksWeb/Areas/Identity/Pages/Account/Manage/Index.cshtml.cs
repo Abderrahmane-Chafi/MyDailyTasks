@@ -3,12 +3,15 @@
 #nullable disable
 
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MyDailyTasks.DataAcess.Repository.IRepository;
 
 namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
 {
@@ -16,13 +19,18 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IUnitOfWork _unitOfWork;
+
 
         public IndexModel(
             UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<IdentityUser> signInManager,
+            IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _unitOfWork = unitOfWork;
+
         }
 
         /// <summary>
@@ -58,6 +66,10 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            //[DisplayName("First name")]
+            //public string FirstName { get; set; }
+            //[DisplayName("Last name")]
+            //public string LastName { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -65,11 +77,18 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
+            //var claimsIDentity = (ClaimsIdentity)User.Identity;
+            //var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
+            //var firstName = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).FirstName;
+            //var lastName = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).LastName;
+
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                //FirstName = firstName,
+                //LastName = lastName
             };
         }
 
