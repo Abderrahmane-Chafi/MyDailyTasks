@@ -1,25 +1,13 @@
 ﻿var dataTable;
 
 $(document).ready(function () {
-    var url = window.location.search;
-
-    if (url.includes("Done")) {
-        loadDataTable("Done");
-    }
-    else {
-        if (url.includes("Undone")) {
-            loadDataTable("Undone");
-        }
-        else {
-            loadDataTable();
-        }
-    }
+    loadDataTable();
 });
 
-function loadDataTable(filter) {
+function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Customer/Tasks/GetAll?filter=" + filter
+            "url": "/Customer/Tasks/GetAll"
         },
         "columns": [
             { "data": "name", "widht": "70%" },

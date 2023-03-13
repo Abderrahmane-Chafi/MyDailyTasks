@@ -1,24 +1,4 @@
-﻿@{
-    //Extract query parameter
-    var filter = Context.Request.Query["filter"];
-    //Classes
-    var Done = "text-primary";
-    var Undone = "text-primary";
-    var All = "text-primary";
-
-    switch (filter)
-    {
-        case "Done":
-            Done = "active text-white";
-            break;
-        case "Undone":
-            Undone = "active text-white";
-            break;
-        case "All":
-            All = "active text-white";
-            break;
-    }
-}
+﻿
 
 <div class="container p-3">
 
@@ -26,19 +6,6 @@
         <div class="p-2 col-5">
             <div class="row">
                 <h2 class="text-primary col-4">Tasks List</h2>
-                <div class="col">
-                    <ul class="list-group list-group-horizontal-sm ">
-                        <a style="text-decoration:none;" asp-controller="Tasks" asp-action="Index" asp-route-filter="Done">
-                        <li class="list-group-item @Done">Done</li>
-                        </a>
-                        <a style="text-decoration:none;" asp-controller="Tasks" asp-action="Index" asp-route-filter="Undone">
-                        <li class="list-group-item @Undone">Undone</li>
-                        </a>
-                        <a style="text-decoration:none;" asp-controller="Tasks" asp-action="Index" asp-route-filter="all">
-                        <li class="list-group-item @All">All</li>
-                        </a>
-                    </ul>
-                </div>
             </div>
                     
         </div>

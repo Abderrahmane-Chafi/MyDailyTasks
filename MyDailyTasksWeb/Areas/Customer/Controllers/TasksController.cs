@@ -75,25 +75,12 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
         }
         #region API CALLS
         [HttpGet]
-        public IActionResult GetAll(string filter)
+        public IActionResult GetAll()
         {
             var claimsIDentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
-            IEnumerable<Tasks> tasksList;
+            var tasksList = _unitOfWork.Tasks.GetAll(u => u.ApplicationUserId == claim.Value);
 
-            tasksList = _unitOfWork.Tasks.GetAll(u => u.ApplicationUserId == claim.Value);
-
-
-            switch (filter) {
-                case "Done":
-                    tasksList=tasksList.Where(u => u.Status == "Done");
-                    break;
-                case "Undone":
-                    tasksList=tasksList.Where(u => u.Status == "Undone");
-                    break;
-                default:
-                    break;
-            }
             return Json(new { data = tasksList });
         }
         //POST
