@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hWrbimit2+TymsbD0wPc+U9LxCGqFk4+/0oMKBQeKfUaEO5k3KFYNE/Dx7vmBgAG3PZrm6Bm8IqsN6XTBbMt2A==",
+  "dgSpecHash": "IUYNqVeK72dH9aTrObrVQ58smw0jMrm3MEgNC0mixz23hAD09EdnPPl703PlwtLOcmzpw36zCPLQWyG4Yvz6nw==",
   "success": true,
   "projectFilePath": "C:\\Users\\acer\\Desktop\\Projects\\P-MyDailyTasks\\MyDailyTasks\\MyDailyTasksWeb\\MyDailyTasksWeb.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\acer\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.8\\microsoft.aspnetcore.authentication.google.6.0.8.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.14\\microsoft.aspnetcore.cryptography.internal.6.0.14.nupkg.sha512",

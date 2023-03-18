@@ -30,6 +30,12 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 });
 
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = "684473667586-0bios5igf2n7bmgehg4eub22frbqa7pp.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

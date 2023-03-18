@@ -19,17 +19,14 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IUnitOfWork _unitOfWork;
 
 
         public IndexModel(
             UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            IUnitOfWork unitOfWork)
+            SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _unitOfWork = unitOfWork;
 
         }
 
@@ -66,10 +63,10 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
-            //[DisplayName("First name")]
-            //public string FirstName { get; set; }
-            //[DisplayName("Last name")]
-            //public string LastName { get; set; }
+            [DisplayName("First name")]
+            public string FirstName { get; set; }
+            [DisplayName("Last name")]
+            public string LastName { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -77,18 +74,13 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-            //var claimsIDentity = (ClaimsIdentity)User.Identity;
-            //var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
-            //var firstName = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).FirstName;
-            //var lastName = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).LastName;
 
             Username = userName;
 
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                //FirstName = firstName,
-                //LastName = lastName
+
             };
         }
 
@@ -99,7 +91,9 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
+            //user.FirstName = Input.FirstName;
+            //user.LastName = Input.LastName;
+            //user.PhoneNumber = Input.PhoneNumber;
             await LoadAsync(user);
             return Page();
         }

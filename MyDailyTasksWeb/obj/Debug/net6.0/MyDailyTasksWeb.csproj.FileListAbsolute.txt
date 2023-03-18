@@ -570,3 +570,4 @@ C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\obj\D
 C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\MyDailyTasks.Utility.dll
 C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\MyDailyTasks.Utility.pdb
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
