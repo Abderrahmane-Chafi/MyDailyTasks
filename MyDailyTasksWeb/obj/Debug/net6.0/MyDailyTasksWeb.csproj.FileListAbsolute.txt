@@ -571,3 +571,6 @@ C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\D
 C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\MyDailyTasks.Utility.dll
 C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\MyDailyTasks.Utility.pdb
 C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\MailKit.dll
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\MimeKit.dll
+C:\Users\acer\Desktop\Projects\P-MyDailyTasks\MyDailyTasks\MyDailyTasksWeb\bin\Debug\net6.0\BouncyCastle.Crypto.dll

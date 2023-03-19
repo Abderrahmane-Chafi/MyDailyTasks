@@ -12,12 +12,12 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="Tasks.Name"></label>
-                    <input asp-for="Tasks.Name" class="form-control" />
+                    <input id="Name" asp-for="Tasks.Name" class="form-control" />
                     <span asp-validation-for="Tasks.Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Tasks.Date"></label>
-                    <input asp-for="Tasks.Date" class="form-control" rows="3"/>
+                    <input id="Date" asp-for="Tasks.Date" class="form-control" rows="3" />
                     <span asp-validation-for="Tasks.Date" class="text-danger"></span>
                 </div>
                 <div class="mb-3 col-6">

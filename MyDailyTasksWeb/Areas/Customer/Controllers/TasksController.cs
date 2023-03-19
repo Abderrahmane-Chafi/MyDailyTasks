@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Hosting;
@@ -17,9 +18,13 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
     public class TasksController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public TasksController(IUnitOfWork unitOfWork)
+        private readonly IEmailSender _emailSender;
+
+        public TasksController(IUnitOfWork unitOfWork, IEmailSender emailSender)
         {
             _unitOfWork=unitOfWork;
+            _emailSender = emailSender;
+
         }
         public IActionResult Index()
         {
@@ -50,27 +55,31 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Upsert(TasksViewModel obj)
         {
-
-                if (obj.Tasks.ID == 0)
+            var claimsIDentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
+            if (obj.Tasks.ID == 0)
+            {
+                    
+                obj.Tasks.ApplicationUserId = claim.Value;
+                _unitOfWork.Tasks.Add(obj.Tasks);
+                TempData["success"] = "Task created successfully";
+                var userEmail = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).Email;
+                _emailSender.SendEmailAsync(userEmail, "New Task - My Daily Tasks",
+                    "<p>You have created a new task don't forget to do it before the specific date.</p>"
+               );
+            }
+            else
+            {
+                if (ModelState.IsValid)
                 {
-                    var claimsIDentity = (ClaimsIdentity)User.Identity;
-                    var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
-                    obj.Tasks.ApplicationUserId = claim.Value;
-                    _unitOfWork.Tasks.Add(obj.Tasks);
-                    TempData["success"] = "Task created successfully";
+                _unitOfWork.Tasks.Update(obj.Tasks);
+                TempData["success"] = "Task updated successfully";
                 }
                 else
-                {
-                    if (ModelState.IsValid)
-                    {
-                    _unitOfWork.Tasks.Update(obj.Tasks);
-                    TempData["success"] = "Task updated successfully";
-                    }
-                    else
-                        return View(obj);
-                }
-                _unitOfWork.Save();
-                return RedirectToAction("Index");
+                    return View(obj);
+            }
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
             
         }
         #region API CALLS
