@@ -20,13 +20,16 @@
                     <input id="Date" asp-for="Tasks.Date" class="form-control" rows="3" />
                     <span asp-validation-for="Tasks.Date" class="text-danger"></span>
                 </div>
-                <div class="mb-3 col-6">
-                    <label asp-for="Tasks.Status"></label>
-                    <select asp-for="Tasks.Status" asp-items="@Model.TasksList" class="form-select">
-                        <option disabled selected>==Select a status==</option>
-                    </select>
-                    <span asp-validation-for="Tasks.Status" class="text-danger"></span>
-                </div>
+                @if (Model.Tasks.ID != 0)
+                {
+                    <div class="mb-3 col-6">
+                        <label asp-for="Tasks.Status"></label>
+                        <select asp-for="Tasks.Status" asp-items="@Model.TasksList" class="form-select">
+                            <option disabled selected>==Select a status==</option>
+                        </select>
+                        <span asp-validation-for="Tasks.Status" class="text-danger"></span>
+                    </div>
+                }              
                 <div class="col-12">
                     @if (Model.Tasks.ID != 0)
                     {

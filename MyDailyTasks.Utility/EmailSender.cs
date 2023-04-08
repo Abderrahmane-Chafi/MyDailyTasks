@@ -15,7 +15,7 @@ namespace MyDailyTasks.Utility
         {
             var emailToSend = new MimeMessage();
             //Our email adress
-            emailToSend.From.Add(MailboxAddress.Parse("Abderrahmanedev@gmail.com"));
+            emailToSend.From.Add(MailboxAddress.Parse("abderrahmanedev@gmail.com"));
             //user adress
             emailToSend.To.Add(MailboxAddress.Parse(email));
             emailToSend.Subject = subject;
@@ -28,7 +28,7 @@ namespace MyDailyTasks.Utility
                 //String(Google's SMTP server)-Number(port number)-Security
                 emailClient.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
                 //Email / Password
-                emailClient.Authenticate("Abderrahmanedev@gmail.com", "jpbbecovirikshty");
+                emailClient.Authenticate("abderrahmanedev@gmail.com", "jozfitreemmrfdwp");
                 emailClient.Send(emailToSend);
                 emailClient.Disconnect(true);
             }
