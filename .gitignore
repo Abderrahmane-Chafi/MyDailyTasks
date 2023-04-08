@@ -1,0 +1,16 @@
+# Visual Studio files
+*.sln
+*.csproj
+*.user
+*.vscode
+*.suo
+
+# Build output
+bin/
+obj/
+
+# Node.js files
+node_modules/
+
+# NuGet packages
+packages/
