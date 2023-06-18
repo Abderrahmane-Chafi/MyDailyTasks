@@ -1,6 +1,4 @@
 # Visual Studio files
-*.sln
-*.csproj
 *.user
 *.vscode
 *.suo
