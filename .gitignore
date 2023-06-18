@@ -1,16 +1,33 @@
-# Visual Studio files
-*.user
-*.vscode
-*.suo
-
-# Build output
+# ASP.NET Core
 bin/
 obj/
+*.dll
+*.exe
+*.pdb
+*.userprefs
+*.vscode
+*.vs
 
-# Node.js files
+# Dependencies
+/.nuget/
+/packages/
+bower_components/
 node_modules/
 
-# NuGet packages
-packages/
+# Build artifacts
+wwwroot/dist/
+wwwroot/libs/
+wwwroot/css/
+wwwroot/js/
 
-.vs/
+# IDE-specific files
+.vscode/
+*.sln.ide
+
+# Logs
+logs/
+
+# Configuration files with sensitive information
+appsettings.json
+appsettings.Development.json
+secrets.json
