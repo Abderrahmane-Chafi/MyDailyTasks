@@ -16,7 +16,7 @@ node_modules/
 
 # Build artifacts
 wwwroot/dist/
-wwwroot/libs/
+wwwroot/lib/
 wwwroot/css/
 wwwroot/js/
 
