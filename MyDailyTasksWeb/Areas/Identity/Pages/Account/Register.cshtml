@@ -1,0 +1,90 @@
+﻿@page
+@using MyDailyTasks.Utility;
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+<div class="row mt-4">
+    <div class="col-md-4 card p-3 m-auto">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h1 class="text-center   fw-bold">
+                <span class="text-secondary">My</span><span class="text-primary">Daily</span><span class="text-secondary">Tasks</span>
+            </h1>
+            <hr />
+            <p>Create an account in order to write your daily tasks.</p>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="py-2">
+                <input placeholder="Email" asp-for="Input.Email" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="py-2">
+                <input placeholder="First name" asp-for="Input.FirstName" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="py-2">
+                <input placeholder="Last name" asp-for="Input.LastName" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="py-2">
+                <input placeholder="Phone number" asp-for="Input.PhoneNumber" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="py-2">
+                <input placeholder="Password" asp-for="Input.Password" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="py-2">
+                <input placeholder="Confirm password" asp-for="Input.ConfirmPassword" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole(SD.Role_Admin))
+            {
+                <div class="py-2">
+                    <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
+                        <option disabled selected>=Select a role=</option>
+                    </select>
+                </div>
+            }
+            <button id="registerSubmit" type="submit" class="w-100 btn btn btn-primary">Register</button>
+        </form>
+    </div>
+
+</div>
+<div class="row mt-2">
+    <div class="col-md-4 card p-2 m-auto">
+        <section>
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) != 0)
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    @if (provider.Name.ToLower().Contains("google"))
+                                    {
+                                        <button type="submit" class="btn btn-block google-btn form-control mt-2" name="provider"
+                                            value="@provider.Name"
+                                            title="Log in using your @provider.DisplayName account"
+                                            style="color: white;border:none;background-color:#dd4b39">
+                                                <i class="bi bi-google"></i> Log in using @provider.DisplayName
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }                                 
+                                }
+                            </p>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
