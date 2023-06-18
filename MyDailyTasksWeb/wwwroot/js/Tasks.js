@@ -1,39 +1,10 @@
-﻿var dataTable;
-
-$(document).ready(function () {
-    loadDataTable();
+﻿// Event listener for the "Remove" button
+$('#removeBtn').click(function () {
+    var url = $(this).data('url');
+    Delete(url);
 });
 
-function loadDataTable() {
-    dataTable = $('#tblData').DataTable({
-        "ajax": {
-            "url": "/Customer/Tasks/GetAll"
-        },
-        "columns": [
-            { "data": "name", "widht": "70%" },
-            { "data": "date", "widht": "70%" },
-            { "data": "status", "widht": "70%" },
-            {
-                "data": "id",
-                "render": function (data) {
-                    return `
-                    <div class="w-75 btn-group" role="group">
-                        <a href="/Customer/Tasks/Upsert?id=${data}" class="btn btn-primary mx-2">
-                            <i class="bi bi-pencil-square"></i>Edit
-                        </a>
-                        <a onClick=Delete('/Customer/Tasks/Delete/${data}')
-                           class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i>Delete
-                        </a>
-                    </div>
-                    `
-                },
-                "widht": "30%"
-            },
-
-        ]
-    });
-}
-
+// Function to delete the task
 function Delete(url) {
     Swal.fire({
         title: 'Are you sure?',
@@ -46,21 +17,19 @@ function Delete(url) {
         cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
-            //We will have to make an ajax request to hit the endpoint for delete
+            // Make an AJAX request to hit the endpoint for delete
             $.ajax({
                 url: url,
                 type: 'DELETE',
                 success: function (data) {
                     if (data.success) {
-                        //Reload datatable
-                        dataTable.ajax.reload();
                         toastr.success(data.message);
-                    }
-                    else {
+                        location.reload(); // Reload the page
+                    } else {
                         toastr.error(data.message);
                     }
                 }
-            })
+            });
         }
-    })
+    });
 }

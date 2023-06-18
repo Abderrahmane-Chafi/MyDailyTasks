@@ -28,7 +28,10 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var claimsIDentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
+            IEnumerable<Tasks> tasksList = _unitOfWork.Tasks.GetAll(u => u.ApplicationUserId == claim.Value);
+            return View(tasksList);
         }
 
         public IActionResult Upsert(int? Id)
@@ -63,10 +66,10 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
                 obj.Tasks.ApplicationUserId = claim.Value;
                 _unitOfWork.Tasks.Add(obj.Tasks);
                 TempData["success"] = "Task created successfully";
-                var userEmail = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).Email;
-                _emailSender.SendEmailAsync(userEmail, "New Task - My Daily Tasks",
-                    "<p>You have created a new task don't forget to do it before the specific date.</p>"
-               );
+               // var userEmail = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).Email;
+               // _emailSender.SendEmailAsync(userEmail, "New Task - My Daily Tasks",
+               //     "<p>You have created a new task don't forget to do it before the specific date.</p>"
+               //);
             }
             else
             {
@@ -83,15 +86,6 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
             
         }
         #region API CALLS
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var claimsIDentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
-            var tasksList = _unitOfWork.Tasks.GetAll(u => u.ApplicationUserId == claim.Value);
-
-            return Json(new { data = tasksList });
-        }
         //POST
         [HttpDelete]
         public IActionResult Delete(int? Id)

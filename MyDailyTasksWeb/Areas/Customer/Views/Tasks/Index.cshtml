@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<MyDailyTasks.Models.Tasks>
 
 <div class="container p-3">
 
@@ -18,22 +18,29 @@
 
     <br /> <br />
 
-    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Date
-                </th>
-                <th>
-                    Status
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-    </table>
+    <div class="row d-flex justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="px-0 col-md-3 col-sm-12 bg-primary text-light card m-3">
+                <div class="card-header">
+                    <h5 class="text-center">@item.Name</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <p>Status: @item.Status</p>
+                        <p>Date: @item.Date.ToString()</p>
+                    </div>
+                    
+                    <div class="row">
+                        <a class="btn btn-dark mb-2" asp-controller="Tasks" asp-action="Upsert" asp-route-Id="@item.ID">Edit</a>
+                        <a id="removeBtn" class="btn btn-warning" data-url="@Url.Action("Delete", "Tasks", new { Id = item.ID })">Remove</a>
+                    </div>
+                </div>
+                
+            </div>
+        }
+    </div>
+    
 </div>
 
 @section Scripts{

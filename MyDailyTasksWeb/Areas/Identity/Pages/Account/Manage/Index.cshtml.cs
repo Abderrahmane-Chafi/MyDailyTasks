@@ -63,10 +63,16 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
-            [DisplayName("First name")]
-            public string FirstName { get; set; }
-            [DisplayName("Last name")]
-            public string LastName { get; set; }
+
+            [Required]
+            [DataType(DataType.Password)]
+            [Display(Name = "Old password")]
+            public string OldPassword { get; set; }
+
+            [Required]
+            [DataType(DataType.Password)]
+            [Display(Name = "New password")]
+            public string NewPassword { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -80,6 +86,7 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
+                NewPassword = string.Empty
 
             };
         }
@@ -91,9 +98,6 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            //user.FirstName = Input.FirstName;
-            //user.LastName = Input.LastName;
-            //user.PhoneNumber = Input.PhoneNumber;
             await LoadAsync(user);
             return Page();
         }
@@ -121,6 +125,36 @@ namespace MyDailyTasksWeb.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+            }
+
+            // Check if the old and new passwords are provided
+            if (!string.IsNullOrEmpty(Input.OldPassword) && !string.IsNullOrEmpty(Input.NewPassword))
+            {
+                // Verify the old password
+                var isOldPasswordCorrect = await _userManager.CheckPasswordAsync(user, Input.OldPassword);
+                if (!isOldPasswordCorrect)
+                {
+                    // Handle incorrect old password
+                    ModelState.AddModelError(string.Empty, "The old password is incorrect.");
+                    await LoadAsync(user);
+                    return Page();
+                }
+
+                // Change the user's password
+                var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
+                if (!changePasswordResult.Succeeded)
+                {
+                    // Handle password change error
+                    StatusMessage = "Unexpected error when trying to change the password.";
+                    return RedirectToPage();
+                }
+            }
+            else
+            {
+                // Handle missing old or new password
+                ModelState.AddModelError(string.Empty, "Both old and new passwords are required.");
+                await LoadAsync(user);
+                return Page();
             }
 
             await _signInManager.RefreshSignInAsync(user);
