@@ -1,0 +1,59 @@
+﻿@model MyDailyTasks.Models.ViewModels.TasksViewModel
+
+<form method="post" asp-action="Upsert">
+    <input asp-for="Tasks.ID" hidden />
+    <input asp-for="Tasks.ApplicationUserId" hidden />
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row">
+                <div class="col-12 pb-2">
+                    <h2 class="text-primary">@(Model.Tasks.ID != 0 ? "Updata a " : "Create a") Task</h2>
+                    <hr />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Tasks.Name"></label>
+                    <input id="Name" asp-for="Tasks.Name" class="form-control" />
+                    <span asp-validation-for="Tasks.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Tasks.Date"></label>
+                    <input id="Date" asp-for="Tasks.Date" class="form-control" rows="3" />
+                    <span asp-validation-for="Tasks.Date" class="text-danger"></span>
+                </div>
+                @if (Model.Tasks.ID != 0)
+                {
+                    <div class="mb-3 col-6">
+                        <label asp-for="Tasks.Status"></label>
+                        <select asp-for="Tasks.Status" asp-items="@Model.TasksList" class="form-select">
+                            <option disabled selected>==Select a status==</option>
+                        </select>
+                        <span asp-validation-for="Tasks.Status" class="text-danger"></span>
+                    </div>
+                }              
+                <div class="col-12">
+                    @if (Model.Tasks.ID != 0)
+                    {
+                        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
+                    }
+                    <a asp-controller="Tasks" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                        Return to list
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+
+
