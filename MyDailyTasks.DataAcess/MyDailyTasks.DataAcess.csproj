@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyDailyTasks.Models\MyDailyTasks.Models.csproj" />
+    <ProjectReference Include="..\MyDailyTasks.Utility\MyDailyTasks.Utility.csproj" />
   </ItemGroup>
 
 </Project>
