@@ -64,19 +64,18 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
             {
                     
                 obj.Tasks.ApplicationUserId = claim.Value;
+                obj.Tasks.Date = DateTime.SpecifyKind(obj.Tasks.Date, DateTimeKind.Utc);
+
                 _unitOfWork.Tasks.Add(obj.Tasks);
                 TempData["success"] = "Task created successfully";
-               // var userEmail = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value).Email;
-               // _emailSender.SendEmailAsync(userEmail, "New Task - My Daily Tasks",
-               //     "<p>You have created a new task don't forget to do it before the specific date.</p>"
-               //);
             }
             else
             {
                 if (ModelState.IsValid)
                 {
-                _unitOfWork.Tasks.Update(obj.Tasks);
-                TempData["success"] = "Task updated successfully";
+                    obj.Tasks.Date = DateTime.SpecifyKind(obj.Tasks.Date, DateTimeKind.Utc);
+                    _unitOfWork.Tasks.Update(obj.Tasks);
+                    TempData["success"] = "Task updated successfully";
                 }
                 else
                     return View(obj);
