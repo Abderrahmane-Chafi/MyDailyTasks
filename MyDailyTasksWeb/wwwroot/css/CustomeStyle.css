@@ -52,3 +52,53 @@ ol li::before {
 .logo {
     font-size:25px;
 }
+
+/* Adjust the table width and make it scroll horizontally on smaller screens */
+@media (max-width: 768px) {
+    #tblData {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+/* Make the table container responsive */
+#tblData_wrapper {
+    overflow-x: auto;
+}
+
+.sidebar.toggled #sidebarToggle::after {
+    content: "\203a";
+    font-family: "Font Awesome 5 Free";
+    margin-left: 0.25rem;
+}
+
+.sidebar #sidebarToggle::after {
+    font-weight: 900;
+    content: "\2039"; 
+    font-family: "Font Awesome 5 Free";
+    margin-right: 0.1rem;
+}
+
+.clean-block.clean-hero:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3a3b45;
+    z-index: 1;
+}
+
+.feature-box {
+    position: relative;
+    padding: 15px 20px 15px 20px;
+}
+
+@media (max-width: 576px) { /* Adjust the breakpoint as needed */
+    .line-break-small-screen {
+        display: block;
+        content: '';
+        margin: 2.5rem 0; /* Adjust the margin as needed */
+    }
+}

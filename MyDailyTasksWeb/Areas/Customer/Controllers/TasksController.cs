@@ -36,8 +36,8 @@ namespace MyDailyTasksWeb.Areas.Customer.Controllers
 
         public IActionResult Upsert(int? Id)
         {
-            var Nt = new SelectListItem { Text = " Undone", Value = " Undone" };
-            var d = new SelectListItem { Text = " Done", Value = " Done" };
+            var Nt = new SelectListItem { Text = "Undone", Value = "Undone" };
+            var d = new SelectListItem { Text = "Done", Value = "Done" };
 
             TasksViewModel taskVM = new()
             {

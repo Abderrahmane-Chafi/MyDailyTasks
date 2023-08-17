@@ -1,11 +1,6 @@
-﻿// Event listener for the "Remove" button
-$('#removeBtn').click(function () {
-    var url = $(this).data('url');
-    Delete(url);
-});
-
+﻿
 // Function to delete the task
-function Delete(url) {
+function Delete(url, divId) {
     Swal.fire({
         title: 'Are you sure?',
         text: "You will not be able to go back!",
@@ -23,8 +18,9 @@ function Delete(url) {
                 type: 'DELETE',
                 success: function (data) {
                     if (data.success) {
+                        $('#' + divId).hide();
+
                         toastr.success(data.message);
-                        location.reload(); // Reload the page
                     } else {
                         toastr.error(data.message);
                     }

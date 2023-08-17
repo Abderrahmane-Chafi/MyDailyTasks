@@ -1,13 +1,20 @@
 ﻿@using MyDailyTasks.Utility;
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - My DailyTasks</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta name="description" content="Stay organized and boost your productivity with My Daily Tasks - the user-friendly web application for efficient task management. Plan, track, and organize your tasks effortlessly. Sign up now!" />
+    <title>Manage Your Daily Tasks Effectively with My Daily Tasks - Task Management Made Easy - @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/BootsWatch.css"/>
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap1.min.css">
 
     <link rel="stylesheet" href="~/MyDailyTasksWeb.styles.css" asp-append-version="true" />
 
@@ -17,60 +24,93 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="~/css/CustomeStyle.css" />
-    <link rel="icon" href="~/icon/task.ico" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/baguetteBox.min.css" />
+    <link rel="stylesheet" href="~/css/vanilla-zoom.min.css" />
+
+    <link rel="icon" href="~/icon/MyDailyTasks.ico" type="image/x-icon">
+
 
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                 <a class="navbar-brand fw-bold logo" asp-area="" asp-controller="Home" asp-action="Index">
-                    <span class="text-secondary">My</span><span class="text-primary">Daily</span><span class="text-secondary">Tasks</span>
+<body class="page-top">
+    <a href="https://icons8.com/icon/8118/to-do"></a>
+    <a href="https://icons8.com"></a>
+    <div id="wrapper">
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-dark p-0 navbar-dark sticky-top">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon"><img class="w-100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABPElEQVR4nO2WvU7DMBSFvcDK2qbtwiv0BWIXlQEkpkg0eQ5g4kGYbQupCwiF3zBR8QbwAIgFbGAENiO3CJkIEjrkD51P+kZL51r3SocQAABoDMHYLDKuJOPqZiAflkkDwx8yoY2VCnW3Mn5ZIk0Mz2a+Dfefe6RuUKn7vtAbeeF9+bhK6gblT0PG9et0Rbja7e+ZBSrUgRuecv0+EGr9p/fd0dF1bxQba3fq8czQevJlJzx1PHM8N55rdOGYmFaUTDIHYELdfwsr1O08P19k+Pan2QNIvZMKPNfaFB2+HV1mD2ChXG+lw9u18blay3vb2YwnRYZvhclV7gDpIf4avnYwobftTdjDrjoL+DcE6EIVEaALlQRFF4rRhTx0IYIuBMBvoAtVRYAuVBIUXShGF/LQhQi6EAAAAEDK4gNqCaWc2C9augAAAABJRU5ErkJggg=="></div>
+                    <div class="sidebar-brand-text mx-2 text-primary">
+                         My Daily Tasks
+                    </div>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index"><i class="bi bi-house"></i><span>Home</span></a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a></li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Customer" asp-controller="Tasks" asp-action="Index"><i class="bi bi-pencil"></i><span>Tasks</span></a>
+                    </li>
+                    @if (User.IsInRole(SD.Role_Admin))
+                    {
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminData" asp-action="Index"><i class="bi bi-people"></i><span>Users</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Tasks" asp-action="Index">Tasks</a>
-                        </li>
-                        @if (User.IsInRole(SD.Role_Admin))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminData" asp-action="Index">Users</a>
-                            </li>
-                        }                      
-                    </ul>
+                    }
                     <partial name="_LoginPartial" />
 
-                </div>              
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            <partial name="_Notification" />
-            @RenderBody()
-        </main>
-    </div>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="" class="bg-gray-900">
+                <nav class="navbar navbar-expand  mb-4 topbar static-top ">
+                    <div class="container-fluid">
+                        <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+
+                        <ul class="navbar-nav flex-nowrap ms-auto">                          
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <li class="nav-item ">
+                                    <a id="manage" class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User)</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        
+            <div class="container-fluid  bg-gray-900" style="position: relative;min-height: 100vh;">
+                <main style="padding-bottom: 2.5rem;" role="main" class="pb-3  bg-gray-900 page landing-page">
+                    <partial name="_Notification" />
+                    @RenderBody()
+                </main>
+            </div>
      
-    <footer class=" footer text-muted mt-2" style="bottom:0;width:100%;position:absolute;">
-        <div class="container">
-            &copy; 2023 - MyDailyTasks
+            <footer class="bg-gradient-dark text-light " style="height: 2.5rem;" >
+                <div class="container my-auto" >
+                    <div class="text-center my-auto copyright"><span>Copyright © My Daily Tasks 2023</span></div>
+                </div>
+            </footer>
         </div>
-    </footer>
+    </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/bootstrap1.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/js/bs-init.js"></script>
+    <script src="~/js/chart.min.js"></script>
+    <script src="~/js/theme.js"></script>
+    <script src="~/js/baguetteBox.min.js"></script>
+    <script src="~/js/vanilla-zoom.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

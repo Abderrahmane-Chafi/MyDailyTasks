@@ -14,6 +14,8 @@ namespace MyDailyTasks.Models
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }= DateTime.Now;
         public string Status { get; set; } = "Undone";
         public string ApplicationUserId { get; set; }

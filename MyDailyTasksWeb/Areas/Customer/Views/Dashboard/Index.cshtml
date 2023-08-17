@@ -1,0 +1,120 @@
+﻿@model MyDailyTasks.Models.ViewModels.DashboardVM
+
+<a href="https://icons8.com/icon/47783/tasks"></a> <a href="https://icons8.com"></a>
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary mb-0">Dashboard</h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card bg-dark  shadow border-start-primary py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>total number of tasks</span></div>
+                        <div class="text-light fw-bold h5 mb-0"><span>@Model.TotalTasks.ToString()</span></div>
+                        </div>
+                        <div class="col-auto"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADJ0lEQVR4nO1bvY4TMRB2ga6Ajp8THTXUICF+RAmBR7kW8QBXcDl4CHor6/l2CUWqoJCTQFBxEvTh/yR4AZAWzcWRVnvJrtdx1k7On2Ql8no8M59nZ2xpLUTLSNP0JoB9AK8BfNKN/3f5mdhUZFl2A8A7AHlVI6K3AK6LTcFwODwDYBfAP+3gT44AIrqvlLoK4JpSqgPgOYBfmggeu8uyYp3R6/WuENG44NR+lmVnF40fDAbn9OsxI2vMcwgfkFJuaWO+14WtQfuilLpXnB/AIyL6qp91is94LPcvq5eIvnFuYV8aEwCg68BxbqSUujBn/qKDk/JzlmFZFzYQ0V5jAmjKHgvfaiKXpultLfcXwM6icXUEFMbt6LlynruJLUqpO7NIaCJ3jJlxoiEAvNJKH1eN04mPSZikafqgaiwRPdH2vGzLD2ErqLN8Pi/sbZFl2UVN6o/gCYCtwtDswQJBInpokqEbKzS0p6bSdEz9MFYoTvYblSdOQMIRiOiuYcaftEFAXjWh3jvkK2pd1/YK1xPy9pWIngE4cuj4Ec9ZtTUOhgBfiATAUwQAOOBDS2lM630+CcjL43z0RQLgLwLeABiVxrTeF5MgYhnM4z4AcSOUm+ayWiDuBGH1TiVJsg3gA2dpcZqSIBGNieg9gEN+zv9LcgeuDkflXWEQBGC66jMjDzkS5tRtV6fDUXAEJEmyzavOrex8G/BOgG9EAhBIBCSxCsB5FZiX9V0t2LpUgZFre2uBWAUQqwBiGUSsAiKgs0BVNTgtZ4FRsAQk8SzgF94jwDeCISCJZwE0rgIme/1VLVgoVaB2rx88AcmKq4Dht0m/Te1duyQIs2+TXmwyAXlZr064xzmHf6WU503krBWGRICU8hKAjzqJfu73+5dN5KwVhkSAqfNlOWuFIRHQxPminLVC4WrCJVEssYtKbZWctULhasIlUdo41a58Wc5aoTjZv/RNjiWb0cqvjAA1/c5/0rbjRPSH6/y8UtcqAeuGSABiBORWkUz60pTL7/7bxuyeAV/PsxHe85ztXSbQp40JkFJuMQmzSFjHxivPzltdnIwQpwP/AffE3yHkr9ImAAAAAElFTkSuQmCC"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card shadow bg-dark border-start-success py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>completed tasks</span></div>
+                            <div class="text-light fw-bold h5 mb-0"><span>@Model.CompletedTasks.ToString()</span></div>
+                        </div>
+                        <div class="col-auto"><img src="data:image/png;base64,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"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card bg-dark shadow border-start-danger py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-danger fw-bold text-xs mb-1"><span>uncompleted tasks</span></div>
+                            <div class="text-light fw-bold h5 mb-0"><span>@Model.UncompletedTasks.ToString()</span></div>
+                        </div>
+                        <div class="col-auto"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEoklEQVR4nO1aS4gdRRTt8ZcoEZGgbsSNnxHFXwyjoOBC0ERGRZfqNiaCQQniws1sdKEmg/Gbh+Bz3V3nVL9xHNAY3yYxiD8CGkk0P5xNNBNHSMaMztBymbeolP3evO6qft0DfeDC43V13XtP1+feWxUENWrUqFGjRqFQSt1McguAD0juIXkEwGmS/4jIbwC/yjMA7wPYHMfxcLCSobW+k+Q4yWmSSU75DcAOAHcEKwFJkgxprR8lud/B6VQB8BXJUdERVBEkR0h+49vxFCK+jqJofVAVhGF4KYB3SC4W7bwhomtns9lcXarzcRwPkzwwQMft0fCDUurGspy/B8Cpspw3SJDd5P6BOk9yI8m5sp03SDgLYMNAnAdwL4AzZTudInOFj4Q4jocB/FkBZ7vJTGFrQrPZXE3y+wo4uZwckJ3JOwEk362Ac30JgLe8Oh9F0XqSCxmMeMGFQAD77IgPwIsZ44QRL84nSTKUNcKTdSIMw6ssAtbKHO3HeADrzHdbrdY1JGczjoT9XsJmAI/lHIaNlL625nmP5Ec5p8NGZwKYP7H535dst9sXAfgpy8iRgCtvmC1Tycn5KIruyul817mstX6w37VjbGzsAkl+XGyIouj23ARwKZ9PHEl42u4XwCcp7Q42Go2LLf2bXPWTfNOFgGkPBkyHYbjG6vcmkvNWu4fMNpOTk1eS/N2D/hMuZazEk7yWQu524+vrIuOOVqt1Q2YCSG7xZQCAcySvN/sPw/AKkidJ/m0/k3mbMe7oKVrrZzMTgKUCZuKRhNjWIYYBeDVFd9unbhlNmQkg+aVnIxKl1MOmjjAML5yYmLjM/E8p9ZRvvQC+yEwAgGO+DSH5s73SW4Ss8bTw2nIkMwHsL2zNI9t6kP56EToB/JGHgPmCCJi1o70eW6MvAs5VhgAAR9OquZ2oc7FKBMwUNAKe7KHzw8pMAQBHCzCk3UunpL0A/qrKIrjHsxEL9hlfGIbXSYZo/qe1frkAAnaXHgiR3JWiIyb5nEXKJSQPlx4IAdjs0YBZAFeb/ZN8oPPsZBzHl1u6n/BMwKa8x15JEXu/XWZLC4dJfl5qMiSQ83kPBhyWYR0YIPmM1WYOwLVmG1kvPCVEx4O8ALDDgwGjKecLJ+x2AD5O0d9w1Q/gDddbHonPJATAK13aL2qt7zbbSsToehLlVBITdG5m5HH+3yiKbg0MyELYa5/vQthLDgTsDVxBcjSn8rdT+tq13HtKqUfMd2T9AHAo50dwPzFOkmQoR2VWwui1Zj9xHN8io6KPd3+UOoFF3OMDL4mbkLmZcUV+/rwOlpz41KWEBeCzDPoXJLkKfILkToe5OGgZD3xjampqFcnvKuBcOcfjArl8UGCa7CydO0vnVZiLuhx1pmxnU2ROKXVfMAgA2CAXkyr05c/aFefCQXJEKi0VcP70wL58lzWhtHtDAL4tfM4vB0lu5E6Oz6OsPkR0jcvOFFQFANYVcUs85avv8x7k+ITE8mJkAc7vHdhtUB/onPBuT8v9M8hxueCgtb4tWMlQS4ul3PZ4T1JeAL90Aqr5jsx0CqG7pY20zV3GqlGjRo0aNYJ+8R9numChDBMhMQAAAABJRU5ErkJggg=="></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">        
+        <div class="col-lg-7 mb-4">
+        <div class="card  shadow mb-4">
+                <div class="card-header py-3 bg-dark">
+                    <h6 class="text-primary bg-dark fw-bold m-0 text-uppercase">last three tasks added</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var item in Model.LastThreeTasks)
+                    {
+                    <li class="list-group-item bg-dark text-light">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col me-2">
+                                    <h6 class="mb-0"><strong>@item.Name</strong></h6><span class="text-xs">@item.Date.ToShortDateString()</span>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-5 col-xl-4">
+            <div class="card bg-dark text-light shadow mb-4">
+            <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary fw-bold m-0 text-uppercase">Tasks</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="taskChart"></canvas>
+                    </div>
+
+                    <div class="text-center small mt-4">
+                        <span class="me-2"><i class="bi bi-circle-fill text-danger"></i>&nbsp;Uncompleted</span>
+                        <span class="me-2"><i class="bi bi-circle-fill text-success"></i>&nbsp;Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/chart.min.js"></script>
+
+    <script>
+        // Get the data from your Razor view model
+        var completedTasks = @Html.Raw(Json.Serialize(Model.CompletedTasks));
+        var uncompletedTasks = @Html.Raw(Json.Serialize(Model.UncompletedTasks));
+
+        // Access the canvas element and create the chart
+        var ctx = document.getElementById('taskChart').getContext('2d');
+        var taskChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Uncompleted'],
+                datasets: [{
+                    data: [completedTasks, uncompletedTasks],
+                    backgroundColor: ['#1cc88a', '#dc3545'],
+                    borderColor: ['#ffffff', '#ffffff'],
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false,
+                    labels: {
+                        fontStyle: 'normal'
+                    }
+                },
+                title: {
+                    display: false,
+                    fontStyle: 'normal'
+                }
+            }
+        });
+    </script>

@@ -3,11 +3,11 @@
     <form method="post" asp-action="Upsert">
         <input asp-for="Tasks.ID" hidden />
         <input asp-for="Tasks.ApplicationUserId" hidden />
-    <div class="d-flex justify-content-center row">
+    <div class="d-flex justify-content-center row text-light">
             <div class="col-10">
                 <div class="border p-3 mt-4 row">
                     <div class="col-12 pb-2">
-                        <h2 class="text-primary">@(Model.Tasks.ID != 0 ? "Update a " : "Create a") Task</h2>
+                    <h1 class="text-primary">@(Model.Tasks.ID != 0 ? "Update a " : "Create a") Task</h1>
                         <hr />
                     </div>
                     <div class="mb-3">
@@ -39,7 +39,7 @@
                         {
                         <button type="submit" onclick="return ValidateInput()" class="btn btn-primary mb-2" style="width:150px">Create</button>
                         }
-                        <a asp-controller="Tasks" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                    <a asp-controller="Tasks" asp-action="Index" class="btn btn-secondary mb-2" style="width:150px">
                             Return to list
                         </a>
                     </div>
