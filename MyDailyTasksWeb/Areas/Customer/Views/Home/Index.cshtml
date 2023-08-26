@@ -1,74 +1,109 @@
 ﻿@model MyDailyTasks.Models.ViewModels.HomeVM
+@using MyDailyTasks.Utility;
+@using Microsoft.AspNetCore.Identity
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    Layout = "/Views/Shared/_EmptyLayout.cshtml";
+}
+<nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+            <div class="sidebar-brand-icon"><img style="width:26.16px;height: 26.16px;" class="w-100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABPElEQVR4nO2WvU7DMBSFvcDK2qbtwiv0BWIXlQEkpkg0eQ5g4kGYbQupCwiF3zBR8QbwAIgFbGAENiO3CJkIEjrkD51P+kZL51r3SocQAABoDMHYLDKuJOPqZiAflkkDwx8yoY2VCnW3Mn5ZIk0Mz2a+Dfefe6RuUKn7vtAbeeF9+bhK6gblT0PG9et0Rbja7e+ZBSrUgRuecv0+EGr9p/fd0dF1bxQba3fq8czQevJlJzx1PHM8N55rdOGYmFaUTDIHYELdfwsr1O08P19k+Pan2QNIvZMKPNfaFB2+HV1mD2ChXG+lw9u18blay3vb2YwnRYZvhclV7gDpIf4avnYwobftTdjDrjoL+DcE6EIVEaALlQRFF4rRhTx0IYIuBMBvoAtVRYAuVBIUXShGF/LQhQi6EAAAAEDK4gNqCaWc2C9augAAAABJRU5ErkJggg=="></div>
+            <div class="sidebar-brand-text mx-2 text-primary">
+                My Daily Tasks
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a></li>
 
+                <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
 
-<section class="clean-block clean-hero">
-    <div class="text">
-        <h1 class="text-primary fw-bold">My Daily Tasks - Efficient Task Management<br /> for Your Daily Life</h1>
-        <p>Stay organized and boost your productivity with My Daily Tasks <br />the user-friendly web application for efficient task management.</p>
-        <a class="btn btn-primary" asp-controller="Tasks" asp-action="Upsert" asp-area="Customer"><i class="bi bi-plus-circle-dotted"></i> Create a task</a>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Customer" asp-controller="Tasks" asp-action="Index">Tasks</a>
+                </li>
+                @if (User.IsInRole(SD.Role_Admin))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-controller="AdminData" asp-action="Index">Users</a>
+                    </li>
+                }
+            </ul>
+            <partial name="_LoginPartial" />
+
+        </div>
     </div>
-</section>
-<section class="clean-block clean-info dark bg-gray-900">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6"><img class="w-100 border border-black" src="~/images/Home/ScreenShot.png" alt="dashboard image" /></div>
-            <div class="col-md-6">
-                <h2 class="text-primary">Empowering Productivity: The Trusted Choice of countless Individuals </h2>
-                <div class="text-light">
-                    <p>This indispensable productivity tool has earned the trust of over @Model.usersCount.ToString() individuals, becoming the cornerstone of their enhanced productivity.</p>
+</nav>
+<div class="container">
+    <section class="clean-block text-light my-5 masthead" style="padding-top: calc(6rem + 72px);
+    padding-bottom: 6rem;">
+        <div class="container text-center">
+            <h1 class="text-primary fw-bold mb-2">Efficient Task Management for Your Daily Life</h1>
+            <p class="mb-2">Stay organized and boost your productivity with My Daily Tasks<br /> the user-friendly web application for efficient task management.</p>
+            <a class="btn btn-primary mb-5" asp-controller="Tasks" asp-action="Upsert" asp-area="Customer"><i class="bi bi-plus-circle-dotted"></i> Create a task</a>
+        </div>
+    </section>
+
+    <section class="clean-block features text-light my-5" style="padding-top: calc(6rem + 72px);
+    padding-bottom: 6rem;">
+        <div class="container text-center">
+            <div class="block-heading">
+                <h2 class="text-primary">What We offer</h2>
+                <p>Seamless Task Management: Your Productivity, Simplified.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 feature-box">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADGklEQVR4nO1bS2tTQRS+WdU/YP0bvvaFzkSuM3URZi60zUKwUAVfxFTcBq3ahU2hVpuSVpvSiMGFC1cKunBlEx//QOjDlW60oIsmPXJqYiZpQUhmbi54PjibBM6559wzZ+Z+zOd5dhAbHEocZ1InmVApLtUNF4a+MQbGwpherzF4ZvgIE2qGCfWFSw2hmlBbXOpsPJ7o70XuMS7UBBdqO/TE9xVC/2BDwbXQOmJg4OwhJvWT9gcJkmMwOZWF+fwy5B+vOjH0jTF0cuygjlj1fb/Pdf6x9uQvXLkO5fefYHd3F8ICxlqrfITzlyf2FcFpJ3BseyPgg4VHUK1WoVfA2PfnF1uKUF8O9hGPJ/pxvZnJRwWzZhGE2sbhbL0ATKgZs+07ffNffwK82QR43Wb4G/7XCfBZxi81lwMT6p7t/GPmVodrvlNMlgFSbw+2O5WO3cJa5YO5FDatzgJ+Wp00p303A+92xU0BarVay+5QPyzZKkAw2nCM21A3wDZ/uQ7w4nOrvVoH+ParK9dw8+50swBSDzuZ/gtLKxBV5PLL5jJIWysAkyrTcFwoliCqwGf7OwilylABbIFRByhaApxmgKYhyGkX0LQNFugcUIKogg5CRToJAh2FJX0LAH0MSfoaBPoclsQHZIgPsAVGfIAiPoATH6CJD+DEB2jiAwrEB5QgqiA+oEh8ABAfIIkPAOIDJPEBQHyAJD4gQ3yALTDiAxTxAZz4AP3/8gFc6nTDcW6xAFEFCiqcXJvnQo3YuirrEs6uyp6SwQlbl6VdAS9Lq9FzzQ7w1THbIqmthnOUq0QN78rN6/JMqA3r0hkudbYRALU6vZTKtGNnpwrjF9NOBROe7weHmVTfG0HmcksQFcw+zLfI6JxIZhA4WU2BEgqWetkJ+OZbkt+z4KrnEDGUppkBUauDchUcQmEBY+GaN9u+vveveK7h+35fexHQUK5yqy6cfPrsuRND37jVmdPeTD4M4aQpokqZMrpe2Z+55Lbt/6ElVNOo0go9caE2cNrjcPYigBgePPDEWJe4Tzmxva5TI3ERHLW1z/8Gr/MB4wEBvuoAAAAASUVORK5CYII=">
+                    <h3 class="text-info">Responsive design</h3>
+                    <p>Looks great on any screen size!</p>
+                </div>
+                <div class="col-md-5 feature-box">
+                    <img src="data:image/png;base64,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">
+                    <h3 class="text-info">User-Friendly</h3>
+                    <p>Intuitive navigation for all users</p>
+                </div>
+                <div class="col-md-5 feature-box">
+                    <img src="data:image/png;base64,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">
+                    <h3 class="text-info">Secure Login/Registration</h3>
+                    <p>Your data's safety is a priority.</p>
+                </div>
+                <div class="col-md-5 feature-box">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAACYUlEQVR4nO2az2sTQRTHn3ooCt5U8CZeBH/9A2JBPFTxroKtePMgrWgLkmRkIcz3TWIS/BfUi5KT4D8hnryZnRSlpfZqFS9tgyuz1DKmsdkEG83O+8CwZBl23vvuzJvZl0ckCIIgCL0ptM6Til+Qsiuk7EZ6Ldnn6f3co+x9UnGHlE12trhDxXiOcouKb/Z2/DcRflCpdYNyx6ydIGVX+wtgEyrZz2n/XFFsXc3k/LYI7SvDDBNF0X5mnjHGPNrr5sZx42WzrBQvDCSAiueHEUBrfZuZkxG2mWyWqXh+MAHsg2EEcAaNUgAA03uzBB63p4YRwE1JZxSAygjadPYlMGsn0uAWbBB0uO3NbXP9tkHVvk65pRjPhXsQ+oX6cI6UfUYqXqaSXU+v7ndh8ex2H0EQBEEQhFxSkJxgJ8yjsJKc4Gq4n8NFyQkuSE5QSU4wkZygCjUIOiQnSJITTJGcoCAIgjBo0QMAvCmXy6coNJj5ifd//CsKCQB3u4oSHlIoaK2nmHnTe/vN7AUJYw6A08z8xXP+XRRFhygEtNbHASx50/5jrVY7RiHQaDQOAnjrOf8VwHjXDdTr9SPMfAvA0d36NZvNAwBee86vA7g09nWCAN5vreNPxpgTu/R76kd8rfUdykOdIDMve8GspwgA7nXV3+lBnf9v6wQBXATw/U8iaK2vAeh4D36ZJMm+XNUJArgA4JsnwpIx5qQLcADWgtjujDGT3TOBmVe8N7/YL1COPeiaCZ4Ya5VK5QyFAHYuhw0AlykkjDGTW0fdzewl5zmjWq0edsfef22HIAgC/WV+AjOfYuG4DmlOAAAAAElFTkSuQmCC">
+                    <h3 class="text-info">CRUD Operations on Tasks</h3>
+                    <p>Manage tasks with ease and efficiency.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<section class="clean-block features text-light">
-    <div class="container text-center">
-        <div class="block-heading">
-            <h2 class="text-primary">What We offer</h2>
-            <p>Seamless Task Management: Your Productivity, Simplified.</p>
+    </section>
+    <section class="clean-block  row  p-4 my-5" style="padding-top: calc(6rem + 72px);
+    padding-bottom: 6rem;">
+        <div class="col-12 col-md-6 col-lg-6">
+            <h2 class="text-primary my-2">Organize, Plan, and Track Your Tasks with Ease</h2>
+            <p class="text-light">
+                With My Daily Tasks, task management becomes as quick as a blink. Bid farewell to outdated methods of jotting down tasks and embrace innovation through its user-friendly interface.
+            </p>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-5 feature-box">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADGklEQVR4nO1bS2tTQRS+WdU/YP0bvvaFzkSuM3URZi60zUKwUAVfxFTcBq3ahU2hVpuSVpvSiMGFC1cKunBlEx//QOjDlW60oIsmPXJqYiZpQUhmbi54PjibBM6559wzZ+Z+zOd5dhAbHEocZ1InmVApLtUNF4a+MQbGwpherzF4ZvgIE2qGCfWFSw2hmlBbXOpsPJ7o70XuMS7UBBdqO/TE9xVC/2BDwbXQOmJg4OwhJvWT9gcJkmMwOZWF+fwy5B+vOjH0jTF0cuygjlj1fb/Pdf6x9uQvXLkO5fefYHd3F8ICxlqrfITzlyf2FcFpJ3BseyPgg4VHUK1WoVfA2PfnF1uKUF8O9hGPJ/pxvZnJRwWzZhGE2sbhbL0ATKgZs+07ffNffwK82QR43Wb4G/7XCfBZxi81lwMT6p7t/GPmVodrvlNMlgFSbw+2O5WO3cJa5YO5FDatzgJ+Wp00p303A+92xU0BarVay+5QPyzZKkAw2nCM21A3wDZ/uQ7w4nOrvVoH+ParK9dw8+50swBSDzuZ/gtLKxBV5PLL5jJIWysAkyrTcFwoliCqwGf7OwilylABbIFRByhaApxmgKYhyGkX0LQNFugcUIKogg5CRToJAh2FJX0LAH0MSfoaBPoclsQHZIgPsAVGfIAiPoATH6CJD+DEB2jiAwrEB5QgqiA+oEh8ABAfIIkPAOIDJPEBQHyAJD4gQ3yALTDiAxTxAZz4AP3/8gFc6nTDcW6xAFEFCiqcXJvnQo3YuirrEs6uyp6SwQlbl6VdAS9Lq9FzzQ7w1THbIqmthnOUq0QN78rN6/JMqA3r0hkudbYRALU6vZTKtGNnpwrjF9NOBROe7weHmVTfG0HmcksQFcw+zLfI6JxIZhA4WU2BEgqWetkJ+OZbkt+z4KrnEDGUppkBUauDchUcQmEBY+GaN9u+vveveK7h+35fexHQUK5yqy6cfPrsuRND37jVmdPeTD4M4aQpokqZMrpe2Z+55Lbt/6ElVNOo0go9caE2cNrjcPYigBgePPDEWJe4Tzmxva5TI3ERHLW1z/8Gr/MB4wEBvuoAAAAASUVORK5CYII=">
-                <h3 class="text-info">Responsive design</h3>
-                <p>Looks great on any screen size!</p>
-            </div>
-            <div class="col-md-5 feature-box">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAG1ElEQVR4nO1aW2wUVRgefQET1GDCzb4YIjHGyIOaSKIPBA0RwSggtKKJ8gIkaGKjiC/QVhHZuXXOzGwvOy3rNjtl2W13e4ESioWW3qSUlrLQi5corRALVCBAalH5zRlYM52d2Z0t7cy09Ev+dLs9M+d83/nPOf/5UoKYxjQsQWlp6ZN+v18IBAK9oVDoZjgc/reyshLC4fCdoqKiazzPtyGEPBzHZbhcrkeJqQKv1/tKIBDoiUQigAnrRTgcBp7n/w+E0C2EUBHHcYuIyQpJkp6QZbk1EXEjAVRC3EYIkV6vdyYxmeDz+V4vKysbTkY8Rl6SJF0BVNHKsuwCYjKgpKQkIxKJKOtbG9UHa6C2vhlaunrh1I/9cLb/ihLtfeehqbMbIgdroVAqMhJhgOO4xYTTZz6iQ76q+gDUn+iE7gtXoefitYSB29S3dYFUvFdXBFEU5xNOhCzLs/XSvubIUWWWkxHXRvT8ZdgX0t0b2hmGeYRwGmRZbtWSr61vMjXribKhouaIngg5hNOOuohmt8czryV/7vwg8FlZkL5iLSx/deWoyFixFvjsbKWNVgRtJiCEbjhqKQQCgR7tmtdLe0xQS1wbuI3ecij0xJ0UeYQTEAwG07Sz33CySzel9WZeG+vfWKP77PfNJ7UC3HRExej3+wXtUWe07jHBruIcuH0Y6UanlKO0MdoPPPFHZLoT0r939MbXbLipYXJG5GNhJACOSE2tVoBCu/kT+GKjFgAXOXqDv+TfAZkbPkgqQOaG9+GyvEP3HY2nzsZViHbzJ7SFT8dPA7qDv4Y2JCUfC9xW7x24YtScBoN28ycqKipGbYBGRQ+eVbMCXDLIAPxuTQb8ZTd/At/n1RebRFWfWQESVYeOE0CSpOuYeOxWhy85RgSG6zxJyQ/XSYbPO3IJ8Dzfph5UY8c5QwKDHXVJBRjsOGr4vCM3QYSQRz0ofKU1ItB7YUgRQS8T8Hf4b7iN4TF48LA2Awps9/bKy8uVPSC2BERRhPLqQ3DsRKeyZo3I4J1eHUbtun79A2obmqGiqhpCoZDSj6q/W5Z5id4xeHui2w1lVTW6+0IyAdq6f1FIa08Zy71EaRy8PZ4XYEtONaSt64JZb55JGE9lnAamsBIc4SX6xtnb2/bVd7Bg9UlD8i9tbIFA8G6K2+4llkyQt/c1WQhPp7fEkV+65TiEw/qzbrmX6Jtgbw+LsGB1+6iZ1yNvi5coW+Ttbd/lhdmrTsPcdzph3/74tLfNS5Qt9Pbe/awKdgvxu7xtXqLXYm/P7XaDo7zEgMXenizL4BgvMWixt4crRm2RY6uX6LfY2ysuLgZHeYkBi709bfrb7iWGLPb2gsEgOMpLjFjs7cVudVb1l9RIqbDY23Oclxi22NtTZ4AjvETJYm8P9+EoL5G319uz30tENnp7jvASOY7LUDfC92szF5JE1tahY80g5uUDTdNAUZTy052XD6I7L06AvPwCKA2FIa+gEFg2V2lTGopAc1ef6f70ovv3P+MKIUEQ1sUJIIriLFwmqhvWtbSPSYBz/VegwFOkkDYKLEasn9zcXOV3owhV1ShExiLAkaa2uFIYc40TAAMbiurGWLmYsxvtvwrZ/gF4+eM+mLc2mtDX+yI7PyF5tQjJyMciPXN/wj7xmJZ80gc5/gFlrLHdX+sU4aVOGIHjuEXYUFQ/UBosh+PdQ/DCpp6khiaO1zYdMEVeLYLZePa9BlNjwGNt7B7SM0ZGWJZdaCgABnZTtevz89wmeHxV4lmPxY5dQkoCpCLCh9v8psaAx4rHrOWBEPqWSAav1zsTHxNxFhZzGOauTi4CSdETJsDOb4Sk/c9bE4XtbPwpgxBqQQjNIMxAFMX5CKF+7UsYYS+k7zyVMBtSJZ+KAHtI1rDfx1aegbe+PA204NMjf4FhmDQiFXActxi7qTq+GlCCD7a6mmBZZhSe23gW5qyJKoE/T2QG7HKJcf0t+zQKW/c0Ai2U6HmAmHy/IAjPE2MBQmgOQqhB78VGETvzJ0IAlmVNjyOW9vf9/4QIoRnYTdXWCEbBcdyEnQL43SbJj/A8v9v0mjcDrCQ2FM0IkUoWjPPs47EVJj3q7gfi3YoxHdfTPM//gG9W9xQfufcZf+chSfLieJFnGKYRE0vQXz5CaL1hhWcHAOAhkiT33W/aUxQlZmVlPUxMVlAUtZ2iqDupkFbFHmIqgKbpj2ia/juFWf+HYZjNxFQCSZJv0zQ9bEKAEYqi1hNTERRFLaUo6nqCmb9BkuRyYiqDpukXaZoe1CE/xDDMEuJBAMuyC2ma/lklwG8ul+sZ4kECwzBpFEW14kj5ojKNaRDjhf8Az/zdjJgvJ/YAAAAASUVORK5CYII=">
-                <h3 class="text-info">User-Friendly</h3>
-                <p>Intuitive navigation for all users</p>
-            </div>
-            <div class="col-md-5 feature-box">
-                <img src="data:image/png;base64,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">                
-                <h3 class="text-info">Secure Login/Registration</h3>
-                <p>Your data's safety is a priority.</p>
-            </div>
-            <div class="col-md-5 feature-box">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAACYUlEQVR4nO2az2sTQRTHn3ooCt5U8CZeBH/9A2JBPFTxroKtePMgrWgLkmRkIcz3TWIS/BfUi5KT4D8hnryZnRSlpfZqFS9tgyuz1DKmsdkEG83O+8CwZBl23vvuzJvZl0ckCIIgCL0ptM6Til+Qsiuk7EZ6Ldnn6f3co+x9UnGHlE12trhDxXiOcouKb/Z2/DcRflCpdYNyx6ydIGVX+wtgEyrZz2n/XFFsXc3k/LYI7SvDDBNF0X5mnjHGPNrr5sZx42WzrBQvDCSAiueHEUBrfZuZkxG2mWyWqXh+MAHsg2EEcAaNUgAA03uzBB63p4YRwE1JZxSAygjadPYlMGsn0uAWbBB0uO3NbXP9tkHVvk65pRjPhXsQ+oX6cI6UfUYqXqaSXU+v7ndh8ex2H0EQBEEQhFxSkJxgJ8yjsJKc4Gq4n8NFyQkuSE5QSU4wkZygCjUIOiQnSJITTJGcoCAIgjBo0QMAvCmXy6coNJj5ifd//CsKCQB3u4oSHlIoaK2nmHnTe/vN7AUJYw6A08z8xXP+XRRFhygEtNbHASx50/5jrVY7RiHQaDQOAnjrOf8VwHjXDdTr9SPMfAvA0d36NZvNAwBee86vA7g09nWCAN5vreNPxpgTu/R76kd8rfUdykOdIDMve8GspwgA7nXV3+lBnf9v6wQBXATw/U8iaK2vAeh4D36ZJMm+XNUJArgA4JsnwpIx5qQLcADWgtjujDGT3TOBmVe8N7/YL1COPeiaCZ4Ya5VK5QyFAHYuhw0AlykkjDGTW0fdzewl5zmjWq0edsfef22HIAgC/WV+AjOfYuG4DmlOAAAAAElFTkSuQmCC">
-                <h3 class="text-info">CRUD Operations on Tasks</h3>
-                <p>Manage tasks with ease and efficiency.</p>
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="video-container">
+                <video class="w-100" controls>
+                    <source src="~/videos/MDT1.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
-    </div>
-</section>
-<section class="clean-block  row  p-4">
-    <div class="col-12 col-md-6 col-lg-6">
-        <h2 class="text-primary my-2">Organize, Plan, and Track Your Tasks with Ease</h2>
-        <p class="text-light">
-            With My Daily Tasks, task management becomes as quick as a blink. Bid farewell to outdated methods of jotting down tasks and embrace innovation through its user-friendly interface.
-        </p>
-    </div>
-    <div class="col-12 col-md-6 col-lg-6">
-        <div class="video-container">
-            <video class="w-100" controls>
-                <source src="~/videos/MDT1.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-</section>
+    </section>
 
-
+   
+</div>
+<footer class="bg-gradient-dark text-light " style="height: 2.5rem;">
+    <div class="container my-auto">
+        <div class="text-center my-auto copyright"><span>Copyright © My Daily Tasks 2023</span></div>
+    </div>
+</footer>
 
 <a href="https://icons8.com/icon/RC1lCydC4FKk/smartphone"></a><a href="https://icons8.com"></a>
 
