@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
             <div class="sidebar-brand-icon"><img style="width:26.16px;height: 26.16px;" class="w-100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABPElEQVR4nO2WvU7DMBSFvcDK2qbtwiv0BWIXlQEkpkg0eQ5g4kGYbQupCwiF3zBR8QbwAIgFbGAENiO3CJkIEjrkD51P+kZL51r3SocQAABoDMHYLDKuJOPqZiAflkkDwx8yoY2VCnW3Mn5ZIk0Mz2a+Dfefe6RuUKn7vtAbeeF9+bhK6gblT0PG9et0Rbja7e+ZBSrUgRuecv0+EGr9p/fd0dF1bxQba3fq8czQevJlJzx1PHM8N55rdOGYmFaUTDIHYELdfwsr1O08P19k+Pan2QNIvZMKPNfaFB2+HV1mD2ChXG+lw9u18blay3vb2YwnRYZvhclV7gDpIf4avnYwobftTdjDrjoL+DcE6EIVEaALlQRFF4rRhTx0IYIuBMBvoAtVRYAuVBIUXShGF/LQhQi6EAAAAEDK4gNqCaWc2C9augAAAABJRU5ErkJggg=="></div>
-            <div class="sidebar-brand-text mx-2 text-primary">
+            <div class="sidebar-brand-text mx-2 text-primary fw-bold text-uppercase" >
                 My Daily Tasks
             </div>
         </a>
@@ -20,17 +20,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index"><i class="bi bi-house"></i><span> Home</span></a></li>
 
-                <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-speedometer2"></i><span> Dashboard</span></a></li>
 
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="Customer" asp-controller="Tasks" asp-action="Index">Tasks</a>
+                    <a class="nav-link" asp-area="Customer" asp-controller="Tasks" asp-action="Index"><i class="bi bi-pencil"></i><span> Tasks</span></a>
                 </li>
                 @if (User.IsInRole(SD.Role_Admin))
                 {
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="AdminData" asp-action="Index">Users</a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="AdminData" asp-action="Index"><i class="bi bi-people"></i><span> Users</span></a>
                     </li>
                 }
             </ul>
@@ -90,7 +90,7 @@
         </div>
         <div class="col-12 col-md-6 col-lg-6">
             <div class="video-container">
-                <video class="w-100" controls>
+                <video class="w-100" controls poster="~/images/Home/ScreenShot.png">
                     <source src="~/videos/MDT1.mp4" type="video/mp4">
                 </video>
             </div>
