@@ -102,3 +102,20 @@ ol li::before {
         margin: 2.5rem 0; /* Adjust the margin as needed */
     }
 }
+
+#GoogleBtn {
+    color: white;
+    border: none;
+    background-color: #dd4b39
+}
+
+.Begin {
+    padding-top: calc(6rem + 72px);
+    padding-bottom: 6rem;
+}
+#TheFooter {
+    height: 2.5rem;
+}
+.UpsertBtns {
+    width: 150px
+}

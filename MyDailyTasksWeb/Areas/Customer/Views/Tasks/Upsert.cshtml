@@ -33,13 +33,13 @@
                     <div class="col-12">
                         @if (Model.Tasks.ID != 0)
                         {
-                            <button type="submit" class="btn btn-primary mb-2" style="width:150px">Update</button>
+                            <button type="submit" class="btn btn-primary mb-2 UpsertBtns">Update</button>
                         }
                         else
                         {
-                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary mb-2" style="width:150px">Create</button>
+                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary mb-2 UpsertBtns">Create</button>
                         }
-                    <a asp-controller="Tasks" asp-action="Index" class="btn btn-secondary mb-2" style="width:150px">
+                    <a asp-controller="Tasks" asp-action="Index" class="btn btn-secondary mb-2 UpsertBtns">
                             Return to list
                         </a>
                     </div>
